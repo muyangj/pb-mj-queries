@@ -22,3 +22,4 @@ GROUP BY
     environment_type,
     TO_CHAR(identity_accesses.created_at, 'YYYY-MM')
 ORDER BY "NumberOfVerifications" DESC, organizations.id ASC;
+--test2
