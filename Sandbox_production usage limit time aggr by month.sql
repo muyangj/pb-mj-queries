@@ -19,6 +19,5 @@ WHERE
 	and environment_type = 0
 GROUP BY
     organizations.id,
-    environment_type,
     TO_CHAR(identity_accesses.created_at, 'YYYY-MM')
 ORDER BY "NumberOfVerifications" DESC, organizations.id ASC;
