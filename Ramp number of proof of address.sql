@@ -15,6 +15,7 @@ WHERE
 	AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') < '2022-06-07'
 	AND resources.type = 'PROOF_OF_ADDRESS'
 	AND organizations.id = '972' -- ramp org id
+	AND projects.id IN (6783, 1962) -- the projects that we are billing, dunno why we do not bill the other two projects.
 GROUP BY
 	organizations.id,
 	organizations.name,
