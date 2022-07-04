@@ -24,7 +24,8 @@ WHERE
 	AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') < '2022-06-01'
 GROUP BY
 	organizations.id,
-	identity_accesses.project_id,
+	identity_accesses.status,
+	environment_type,
 	TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD')
 ORDER BY
 	"NumberOfVerifications" DESC;
