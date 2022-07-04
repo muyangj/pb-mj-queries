@@ -9,11 +9,7 @@ SELECT
         WHEN (identity_accesses.status = 6) THEN 'APPROVED'
         WHEN (identity_accesses.status = 7) THEN 'DECLINED'
         ELSE 'ERROR'
-    END AS "IA.mapped_STATUS",
-    CASE
-        WHEN (aml_profiles.id IS NULL) THEN false
-        ELSE true
-    END AS "WL.Run"
+    END AS "IA.mapped_STATUS"
 FROM
     identity_accesses
     LEFT JOIN aml_profiles ON identity_accesses.identity_id = aml_profiles.identity_id
@@ -23,11 +19,9 @@ WHERE
     AND identity_accesses.status IN (6)
     -- DEFINE TIMEFRAME WITH ISO
     AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') >= '2022-04-07' -- GOES BY UTC TIME -- I want to make the date dynamic to the latest billing cycle, but not efficient with multiple cast()
-    AND TO_CHAR(identity_accesses.created_at,'DD')
     AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') <= '2022-05-07' -- GOES BY UTC TIME
 GROUP BY
 	identity_accesses.project_id,
-	identity_accesses.status,
-	"WL.Run"
+	identity_accesses.status
 ORDER BY
 	2
