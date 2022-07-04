@@ -16,3 +16,4 @@ GROUP BY
 	TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD')
 ORDER BY
 	"NumberOfVerifications" DESC;
+	-- why it does not commit?
