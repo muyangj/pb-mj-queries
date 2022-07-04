@@ -20,7 +20,7 @@ FROM
 WHERE
     -- IDs are for the following Slugs same order ramp-0a5fd2a7, ramp-e8c15113,
     identity_accesses.project_id IN (1962, 6783) 
-    AND identity_accesses.status IN (6,7)
+    AND identity_accesses.status IN (6)
     -- DEFINE TIMEFRAME WITH ISO
     AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') >= '2022-04-07' -- GOES BY UTC TIME
     AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') <= '2022-05-07' -- GOES BY UTC TIME
