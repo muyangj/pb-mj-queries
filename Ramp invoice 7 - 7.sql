@@ -18,8 +18,8 @@ WHERE
     identity_accesses.project_id IN (1962, 6783) 
     AND identity_accesses.status IN (6)
     -- DEFINE TIMEFRAME WITH ISO
-    AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') >= '2022-04-07' -- GOES BY UTC TIME -- I want to make the date dynamic to the latest billing cycle, but not efficient with multiple cast()
-    AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') <= '2022-05-07' -- GOES BY UTC TIME
+    AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') >= '2022-05-07' -- GOES BY UTC TIME -- I want to make the date dynamic to the latest billing cycle, but not efficient with multiple cast()
+    AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') <= '2022-06-07' -- GOES BY UTC TIME
 GROUP BY
 	identity_accesses.project_id,
 	identity_accesses.status
