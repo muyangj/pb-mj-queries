@@ -1,5 +1,5 @@
 SELECT
-	COUNT((identity_accesses)) AS "NumberofProof_OF_ADDRESS",
+	COUNT((identity_accesses)) AS "Number of Proof_OF_ADDRESS",
 	organizations.id AS "Organization_id",
 	organizations.name AS "Organization_name",
 	projects.id AS "Project_id",
@@ -25,4 +25,4 @@ GROUP BY
 	resources.type,
 	identity_accesses.status
 ORDER BY
-	"NumberofProof_OF_ADDRESS" DESC;
+	"Project_id" ASC;
