@@ -1,15 +1,7 @@
 SELECT
 	COUNT((identity_accesses.id)) as "Number of Approved Verifications",
-	--TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') as "IA.derived_CREATED_AT",
-	identity_accesses.project_id,
-    CASE
-        WHEN (identity_accesses.status = 0) THEN 'CREATED'
-        WHEN (identity_accesses.status = 1) THEN 'PROCESSING'
-        WHEN (identity_accesses.status = 5) THEN 'PENDING'
-        WHEN (identity_accesses.status = 6) THEN 'APPROVED'
-        WHEN (identity_accesses.status = 7) THEN 'DECLINED'
-        ELSE 'ERROR'
-    END AS "IA.mapped_STATUS"
+	identity_accesses.project_id  as "Project_id",
+	identity_accesses.status as "Status"
 FROM
     identity_accesses
     LEFT JOIN aml_profiles ON identity_accesses.identity_id = aml_profiles.identity_id
