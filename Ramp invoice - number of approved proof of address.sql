@@ -1,7 +1,8 @@
 SELECT
-	COUNT((identity_accesses)) AS "Number of Proof_OF_ADDRESS",
+	COUNT(DISTINCT identity_accesses.id) AS "Number of Proof_OF_ADDRESS",
 	organizations.id AS "Organization_id",
 	organizations.name AS "Organization_name",
+	organizations.stripe_customer_id AS "Stripe_id",
 	projects.id AS "Project_id",
 	resources.type AS "Resource_type",
 	identity_accesses.status AS "Status"
@@ -15,7 +16,7 @@ WHERE
 	TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') >= '2022-05-07'
 	AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') < '2022-06-07'
 	AND resources.type = 'PROOF_OF_ADDRESS'
-	AND organizations.id = '972' -- ramp org id
+	AND organizations.id = '972' -- ramp org.id 972
 	AND projects.id IN (6783, 1962) -- the projects that we are billing, dunno why we do not bill the other two projects.
 	AND identity_accesses.status IN (6) -- only charge the POA of successful verifications
 GROUP BY
