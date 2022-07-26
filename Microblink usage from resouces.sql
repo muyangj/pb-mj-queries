@@ -10,7 +10,7 @@ FROM
 WHERE
 	TO_CHAR(resources.updated_at, 'YYYY-MM-DD') >= '2021-07-20'
 	AND TO_CHAR(resources.updated_at, 'YYYY-MM-DD') < '2022-07-21'
-	AND identity_accesses.status NOT IN(0, 1) -- this line does not work here, though it should have.
+	AND identity_accesses.status NOT IN(0, 1) -- this line does not work here, because only finished verification will have resources. -> need to confirm with product
 	AND resources.type <> 'SELFIE_VIDEO'
 	AND resources.type <> 'COVID_VACCINATION_CARD'
 	AND resources.type <> 'PROOF_OF_ADDRESS'
