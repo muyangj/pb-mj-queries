@@ -3,7 +3,7 @@ SELECT
 	organizations.id AS "Organization_id",
 	organizations.name AS "Organization_name",
 	organizations.stripe_customer_id AS "Stripe_id",
-	projects.id AS "Project_id",
+	--projects.id AS "Project_id",
 	resources.type AS "Resource_type",
 	identity_accesses.status AS "Status"
 FROM
@@ -13,8 +13,8 @@ FROM
 	LEFT JOIN projects ON identity_accesses.project_id = projects.id
 	LEFT JOIN organizations ON projects.organization_id = organizations.id
 WHERE
-	TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') >= '2022-06-01'
-	AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') < '2022-07-01'
+	TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') >= '2022-07-01'
+	AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') < '2022-08-01'
 	AND resources.type = 'PROOF_OF_ADDRESS'
 	AND organizations.id = '972' -- ramp org.id 972
 	AND projects.id IN (6783, 1962) -- the projects that we are billing, dunno why we do not bill the other two projects.
@@ -22,8 +22,8 @@ WHERE
 GROUP BY
 	organizations.id,
 	organizations.name,
-	projects.id,
+	--projects.id,
 	resources.type,
 	identity_accesses.status
-ORDER BY
-	"Project_id" ASC;
+--ORDER BY
+	--"Project_id" ASC;
