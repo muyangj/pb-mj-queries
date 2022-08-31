@@ -7,7 +7,7 @@ FROM
 WHERE
 	identity_accesses.status NOT IN(0, 1)
 	AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') >= '2022-01-01'
-	AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') < '2022-07-01'
+	AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') < '2022-09-01'
 GROUP BY
 	TO_CHAR(identity_accesses.created_at, 'YYYY-MM')
 ORDER BY
