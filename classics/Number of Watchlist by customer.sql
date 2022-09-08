@@ -11,10 +11,11 @@ FROM
 	LEFT JOIN organizations ON projects.organization_id = organizations.id
 WHERE
 	identity_accesses.status NOT IN(0, 1)
-	AND organizations.stripe_customer_id = 'cus_Hmuo7CmXSAx8NK' 
-	AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') >= '2022-07-01'
-	AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') < '2022-07-16'
+	--AND organizations.stripe_customer_id = 'cus_Hmuo7CmXSAx8NK' 
+	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-08-01'
+	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2022-09-01'
 GROUP BY
 	organizations.id,
 	organizations.name,
 	organizations.stripe_customer_id
+ORDER BY 1

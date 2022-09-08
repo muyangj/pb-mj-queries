@@ -11,11 +11,11 @@ FROM
 	LEFT JOIN organizations ON projects.organization_id = organizations.id
 WHERE
 	monitored_identities.monitored = TRUE
-	AND organizations.id = '972'
-	AND identity_accesses.project_id IN(1962, 6783)
+	--AND organizations.id = '972'
+	--AND identity_accesses.project_id IN(1962, 6783)
 	AND identity_accesses.status IN(6)
-	AND identity_accesses.created_at >= '2022-02-22'
-	AND identity_accesses.created_at < '2022-08-01'
+	AND identity_accesses.created_at >= '2022-08-01'
+	AND identity_accesses.created_at < '2022-09-01'
 GROUP BY
 	--TO_CHAR(identity_accesses.created_at,'YYYY-MM'),
 	organizations.name,

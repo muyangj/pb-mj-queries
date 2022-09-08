@@ -13,8 +13,8 @@ FROM
 	LEFT JOIN projects ON identity_accesses.project_id = projects.id
 	LEFT JOIN organizations ON projects.organization_id = organizations.id
 WHERE
-	TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') >= '2022-07-01'
-	AND TO_CHAR(identity_accesses.created_at, 'YYYY-MM-DD') < '2022-08-01'
+	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-08-01'
+	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2022-09-01'
 	AND resources.type = 'PROOF_OF_ADDRESS'
 	AND organizations.id = '972' -- ramp org.id 972
 	AND projects.id IN (6783, 1962) -- the projects that we are billing, dunno why we do not bill the other two projects.
