@@ -3,7 +3,7 @@ SELECT
 	organizations.id AS "Organization_id",
 	organizations.name AS "Organization_name",
 	organizations.stripe_customer_id AS "Stripe_id",
-	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM') AS "IA_created_at",
+	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM') AS "IA_completed_at",
 	--projects.id AS "Project_id",
 	identity_accesses.status as "Status"
 FROM
@@ -15,7 +15,7 @@ WHERE
 	organizations.stripe_customer_id = 'cus_HnBcxQXM2UjZhg'
     --organizations.id = '972' -- Ramp org_id is 972
     --AND identity_accesses.project_id IN (1962, 6783) -- IDs are for the following Slugs same order ramp-0a5fd2a7, ramp-e8c15113,
-    --AND identity_accesses.status IN (6) -- status 6 means it is approved
+    AND identity_accesses.status IN (6) -- status 6 means it is approved
     -- DEFINE TIMEFRAME WITH ISO
     AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-08-01' -- GOES BY UTC TIME
     AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2022-09-01' -- GOES BY UTC TIME
