@@ -4,8 +4,8 @@ SELECT
 	organizations.name AS "Organization_name",
 	organizations.stripe_customer_id AS "Stripe_id",
 	--projects.id AS "Project_id",
-	resources.type AS "Resource_type",
-	identity_accesses.status AS "Status"
+	resources.type AS "Resource_type"
+	---identity_accesses.status AS "Status"
 FROM
 	resources
 	LEFT JOIN identities ON resources.identity_id = identities.id
@@ -16,14 +16,15 @@ WHERE
 	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-08-01'
 	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2022-09-01'
 	AND resources.type = 'PROOF_OF_ADDRESS'
-	AND organizations.id = '972' -- ramp org.id 972
-	AND projects.id IN (6783, 1962) -- the projects that we are billing, dunno why we do not bill the other two projects.
-	AND identity_accesses.status IN (6) -- only charge the POA of successful verifications
+	AND organizations.stripe_customer_id = 'cus_HnBcxQXM2UjZhg'
+	--AND organizations.id = '972' -- ramp org.id 972
+	--AND projects.id IN (6783, 1962) -- the projects that we are billing, dunno why we do not bill the other two projects.
+	--AND identity_accesses.status IN (6) -- only charge the POA of successful verifications
 GROUP BY
 	organizations.id,
 	organizations.name,
 	--projects.id,
-	resources.type,
-	identity_accesses.status
+	resources.type
+	--identity_accesses.status
 --ORDER BY
 	--"Project_id" ASC;

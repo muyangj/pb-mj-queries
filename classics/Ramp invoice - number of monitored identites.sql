@@ -13,6 +13,7 @@ WHERE
 	monitored_identities.monitored = TRUE
 	--AND organizations.id = '972'
 	--AND identity_accesses.project_id IN(1962, 6783)
+	AND organizations.stripe_customer_id = 'cus_HnBcxQXM2UjZhg'
 	AND identity_accesses.status IN(6)
 	AND identity_accesses.completed_at >= '2022-08-01'
 	AND identity_accesses.completed_at < '2022-09-01'
