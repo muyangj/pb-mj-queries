@@ -3,7 +3,7 @@ SELECT
 	organizations.id AS "Organization_id",
 	organizations.name AS "Organization_name",
 	organizations.stripe_customer_id AS "Stripe_id",
-	TO_CHAR(identity_accesses.created_at, 'YYYY-MM') AS "IA_created_at",
+	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM') AS "IA_created_at",
 	--projects.id AS "Project_id",
 	identity_accesses.status as "Status"
 FROM
@@ -22,7 +22,7 @@ WHERE
 GROUP BY
 	organizations.id,
 	organizations.name,
-	TO_CHAR(identity_accesses.created_at, 'YYYY-MM'),
+	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM'),
 	--projects.id,
 	identity_accesses.status
 --ORDER BY
