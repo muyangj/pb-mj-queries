@@ -15,10 +15,10 @@ FROM
 WHERE
 	accesses.updated_at >= '2022-01-01'
 	AND accesses.updated_at < '2022-10-01'
-	--AND organization_profiles.name NOT LIKE '%passbase%'
-	--AND organization_profiles.name NOT LIKE '%Passbase%'
-	--AND organization_profiles.name NOT LIKE '%pb%'
-	--AND organization_profiles.name NOT LIKE 'Marc' 
+	AND organization_profiles.name NOT LIKE 'passbase'
+	AND organization_profiles.name NOT LIKE 'Passbase'
+	AND organization_profiles.name NOT LIKE 'pb'
+	AND organization_profiles.name NOT LIKE 'Marc' 
 GROUP BY
 	TO_CHAR(accesses.updated_at, 'YYYY-MM'),
 	analytics_trust_builds.status,
