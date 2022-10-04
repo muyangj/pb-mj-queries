@@ -1,8 +1,9 @@
 SELECT
 	COUNT(DISTINCT aml_profiles.id) AS "Number of Watchlist",
-	organizations.id AS "OrganizationID",
-	organizations.name AS "OrganizationName",
-	organizations.stripe_customer_id AS "Stripe_id"
+	--organizations.id AS "OrganizationID",
+	--organizations.name AS "OrganizationName",
+	--organizations.stripe_customer_id AS "Stripe_id"
+	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM') as "IA created at"
 FROM
 	aml_profiles
 	LEFT JOIN identities ON aml_profiles.identity_id = identities.id
@@ -11,11 +12,12 @@ FROM
 	LEFT JOIN organizations ON projects.organization_id = organizations.id
 WHERE
 	--identity_accesses.status in (6)
-	AND organizations.stripe_customer_id = 'cus_HnBcxQXM2UjZhg' 
-	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-08-01'
+	--AND organizations.stripe_customer_id = 'cus_HnBcxQXM2UjZhg' 
+	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-01-01'
 	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2022-09-01'
 GROUP BY
-	organizations.id,
-	organizations.name,
-	organizations.stripe_customer_id
-ORDER BY 1
+	--organizations.id,
+	--organizations.name,
+	--organizations.stripe_customer_id
+	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM')
+ORDER BY 2
