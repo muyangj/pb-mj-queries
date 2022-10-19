@@ -16,7 +16,7 @@ WHERE
 	AND organizations.stripe_customer_id = 'cus_HnBcxQXM2UjZhg'
 	AND identity_accesses.status IN(6)
 	AND identity_accesses.completed_at >= '2022-01-01'
-	AND identity_accesses.completed_at < '2022-09-01'
+	AND identity_accesses.completed_at < '2022-10-01'
 GROUP BY
 	--TO_CHAR(identity_accesses.created_at,'YYYY-MM'),
 	organizations.name,
