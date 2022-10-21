@@ -12,7 +12,8 @@ FROM
 	LEFT JOIN projects ON projects.id = targets.project_id
 	LEFT JOIN organizations ON projects.organization_id = organizations.id
 	LEFT JOIN organization_profiles ON organizations.profile_id = organization_profiles.id
-WHERE
+	LEFT JOIN trust_builder_trust_build_messages on trust_builder_trust_build_messages.trust_build_id = trust_builder_trust_builds.id
+WHERE	
 	organizations.id NOT IN (
 	'37224886-12ca-418c-9a83-71ec45e82ca1', -- organization_profiles.name = 'passbase.com'
 	'72d0fc51-e792-4b41-aa82-b6785bef9018', -- organization_profiles.name = 'Marc Morant PB'
@@ -27,10 +28,12 @@ WHERE
 	'60c8caae-5530-41d6-9052-a965153eba76', -- organization_profiles.name = 'Passbase'
 	'c663d24c-a96a-4ed7-875f-916ae14dc1a6', -- organization_profiles.name = 'Passbase'
 	'b909abe5-7573-443d-a7c4-7fbc7c6b3c54', -- organization_profiles.name = 'Passbase'
-	'771b8576-626b-4fe4-927b-4bfe6bf0c758' -- organization_profiles.name = 'Passbase'
-	)
+	'771b8576-626b-4fe4-927b-4bfe6bf0c758', -- organization_profiles.name = 'Passbase'
+	'fbd5e73a-2f5e-4340-905e-0bc2d433fb79' -- organization_profiles.name = 'Passbase'
+		)
 	AND trust_builder_trust_builds.updated_at >= '2022-10-01'
 	AND trust_builder_trust_builds.updated_at < '2022-11-01'
+	AND trust_builder_trust_build_messages.type = 'completed'
 GROUP BY
 	TO_CHAR(trust_builder_trust_builds.updated_at, 'YYYY-MM'),
 	organization_profiles.name,
