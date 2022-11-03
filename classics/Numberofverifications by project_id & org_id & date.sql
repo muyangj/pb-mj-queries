@@ -2,7 +2,7 @@ SELECT
 	COUNT(DISTINCT identity_accesses.id) AS "NumberOfVerifications",
 	identity_accesses.project_id as "project_id",
 	projects.organization_id as "organization_id",
-	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') AS "identity_accesses_created_at"
+	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') AS "identity_accesses_completed_at"
 FROM
 	identity_accesses
 	LEFT JOIN projects ON identity_accesses.project_id = projects.id
