@@ -1,8 +1,8 @@
 SELECT
-	COUNT(DISTINCT trust_builder_trust_builds.id) AS "number_of_trust_builds",
+	TO_CHAR(trust_builder_trust_builds.updated_at, 'YYYY-MM') AS "trust_build_updated_at",
 	organization_profiles.name AS "organization_name",
 	organizations.id AS "organization_id",
-	TO_CHAR(trust_builder_trust_builds.updated_at, 'YYYY-MM') AS "trust_build_updated_at"
+	COUNT(DISTINCT trust_builder_trust_builds.id) AS "number_of_trust_builds"
 	--(trust_assessments."result" ->> 'state') AS "State"
 FROM
 	trust_builder_trust_builds
@@ -33,7 +33,7 @@ WHERE
 	'17c0d7dc-5508-4694-b8b7-d3f553347a23' -- organization_profiles.name = 'YZ Test'
 		)
 	AND trust_builder_trust_builds.updated_at >= '2022-09-01'
-	AND trust_builder_trust_builds.updated_at < '2022-11-07'
+	AND trust_builder_trust_builds.updated_at < '2022-11-16'
 	AND trust_builder_trust_build_messages.type = 'completed'
 GROUP BY
 	TO_CHAR(trust_builder_trust_builds.updated_at, 'YYYY-MM'),

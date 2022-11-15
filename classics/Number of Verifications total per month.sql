@@ -5,8 +5,8 @@ FROM
 	identity_accesses
 WHERE
 	identity_accesses.status NOT IN(0, 1)
-	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-01-01'
-	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2022-11-08'
+	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-08-01'
+	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2022-11-15'
 GROUP BY
 	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM')
 ORDER BY
