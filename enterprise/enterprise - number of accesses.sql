@@ -13,8 +13,8 @@ FROM
 	LEFT JOIN organizations ON projects.organization_id = organizations.id
 	LEFT JOIN organization_profiles on organizations.profile_id = organization_profiles.id
 WHERE
-	accesses.updated_at >= '2022-01-01'
-	AND accesses.updated_at < '2022-10-01'
+	accesses.updated_at >= '2022-10-01'
+	AND accesses.updated_at < '2022-12-01'
 	AND organization_profiles.name NOT LIKE 'passbase'
 	AND organization_profiles.name NOT LIKE 'Passbase'
 	AND organization_profiles.name NOT LIKE 'pb'
