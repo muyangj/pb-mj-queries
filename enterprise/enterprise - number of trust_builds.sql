@@ -34,4 +34,11 @@ WHERE
 	AND trust_builder_trust_builds.updated_at < '2022-11-31'
 	AND trust_builder_trust_builds.completed = 't'
 GROUP BY
-	TO_CHAR(trust_builder_trust_builds.updated_at, 'YYYY-MM-DD')
+	TO_CHAR(trust_builder_trust_builds.updated_at, 'YYYY-MM'),
+	organization_profiles.name,
+	organizations.id
+	--trust_assessments."result" ->> 'state'
+ORDER BY
+	"trust_build_updated_at" DESC,
+	"number_of_trust_builds" DESC,
+	"organization_name" ASC;
