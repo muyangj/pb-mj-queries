@@ -1,5 +1,7 @@
 SELECT
 	TO_CHAR(trust_builder_trust_builds.updated_at, 'YYYY-MM-DD') AS "trust_build_updated_at",
+	organization_profiles.name AS "organization_name",
+	organizations.id AS "organization_id",
 	COUNT(DISTINCT trust_builder_trust_builds.id) AS "number_of_trust_builds"
 	--(trust_assessments."result" ->> 'state') AS "State"
 FROM
