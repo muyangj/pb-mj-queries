@@ -1,7 +1,5 @@
 SELECT
-	TO_CHAR(trust_builder_trust_builds.updated_at, 'YYYY-MM') AS "trust_build_updated_at",
-	organization_profiles.name AS "organization_name",
-	organizations.id AS "organization_id",
+	TO_CHAR(trust_builder_trust_builds.updated_at, 'YYYY-MM-DD') AS "trust_build_updated_at",
 	COUNT(DISTINCT trust_builder_trust_builds.id) AS "number_of_trust_builds"
 	--(trust_assessments."result" ->> 'state') AS "State"
 FROM
@@ -12,7 +10,7 @@ FROM
 	LEFT JOIN projects ON projects.id = targets.project_id
 	LEFT JOIN organizations ON projects.organization_id = organizations.id
 	LEFT JOIN organization_profiles ON organizations.profile_id = organization_profiles.id
-	LEFT JOIN trust_builder_trust_build_messages on trust_builder_trust_build_messages.trust_build_id = trust_builder_trust_builds.id
+	
 WHERE	
 	organizations.id NOT IN (
 	'37224886-12ca-418c-9a83-71ec45e82ca1', -- organization_profiles.name = 'passbase.com'
@@ -32,15 +30,8 @@ WHERE
 	'fbd5e73a-2f5e-4340-905e-0bc2d433fb79', -- organization_profiles.name = 'Passbase'
 	'17c0d7dc-5508-4694-b8b7-d3f553347a23' -- organization_profiles.name = 'YZ Test'
 		)
-	AND trust_builder_trust_builds.updated_at >= '2022-09-01'
-	AND trust_builder_trust_builds.updated_at < '2022-11-16'
-	AND trust_builder_trust_build_messages.type = 'completed'
+	AND trust_builder_trust_builds.updated_at >= '2022-11-01'
+	AND trust_builder_trust_builds.updated_at < '2022-11-31'
+	AND trust_builder_trust_builds.completed = 't'
 GROUP BY
-	TO_CHAR(trust_builder_trust_builds.updated_at, 'YYYY-MM'),
-	organization_profiles.name,
-	organizations.id
-	--trust_assessments."result" ->> 'state'
-ORDER BY
-	"trust_build_updated_at" DESC,
-	"number_of_trust_builds" DESC,
-	"organization_name" ASC;
+	TO_CHAR(trust_builder_trust_builds.updated_at, 'YYYY-MM-DD')
