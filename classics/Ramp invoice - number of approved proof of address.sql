@@ -17,7 +17,7 @@ WHERE
 	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-11-01'
 	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2022-12-01'
 	AND resources.type = 'PROOF_OF_ADDRESS'
-	AND organizations.stripe_customer_id = 'cus_HnBcxQXM2UjZhg'
+	--AND organizations.stripe_customer_id = 'cus_HnBcxQXM2UjZhg'
 	--AND organizations.id = '972' -- ramp org.id 972
 	--AND projects.id IN (6783, 1962) -- the projects that we are billing, dunno why we do not bill the other two projects.
 	--AND identity_accesses.status IN (6) -- only charge the POA of successful verifications
