@@ -1,7 +1,7 @@
 SELECT
 	TO_CHAR(trust_builder_trust_builds.updated_at, 'YYYY-MM') AS "trust_build_updated_at",
-	organization_profiles.name AS "organization_name",
-	organizations.id AS "organization_id",
+	--organization_profiles.name AS "organization_name",
+	--organizations.id AS "organization_id",
 	COUNT(DISTINCT trust_builder_trust_builds.id) AS "number_of_trust_builds"
 	--(trust_assessments."result" ->> 'state') AS "State"
 FROM
@@ -32,15 +32,15 @@ WHERE
 	'fbd5e73a-2f5e-4340-905e-0bc2d433fb79', -- organization_profiles.name = 'Passbase's
 	'17c0d7dc-5508-4694-b8b7-d3f553347a23' -- organization_profiles.name = 'YZ Test'
 		)
-	AND trust_builder_trust_builds.updated_at >= '2022-11-01'
+	AND trust_builder_trust_builds.updated_at >= '2022-01-01'
 	AND trust_builder_trust_builds.updated_at < '2022-12-01'
 	AND trust_builder_trust_builds.completed = 't'
 GROUP BY
-	TO_CHAR(trust_builder_trust_builds.updated_at, 'YYYY-MM'),
-	organization_profiles.name,
-	organizations.id
+	TO_CHAR(trust_builder_trust_builds.updated_at, 'YYYY-MM')
+	--organization_profiles.name,
+	--organizations.id
 	--trust_assessments."result" ->> 'state'
-ORDER BY
+/*ORDER BY
 	"trust_build_updated_at" DESC,
 	"number_of_trust_builds" DESC,
-	"organization_name" ASC;
+	"organization_name" ASC;*/
