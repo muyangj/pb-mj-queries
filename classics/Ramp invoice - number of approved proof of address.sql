@@ -6,7 +6,7 @@ SELECT
 	--projects.id AS "Project_id",
 	resources.type AS "Resource_type",
 	---identity_accesses.status AS "Status"
-	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM')
+	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM') AS "IA_completed_at"
 FROM
 	resources
 	LEFT JOIN identities ON resources.identity_id = identities.id
@@ -14,10 +14,10 @@ FROM
 	LEFT JOIN projects ON identity_accesses.project_id = projects.id
 	LEFT JOIN organizations ON projects.organization_id = organizations.id
 WHERE
-	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-11-01'
-	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2022-12-01'
+	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-12-01'
+	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2023-01-01'
 	AND resources.type = 'PROOF_OF_ADDRESS'
-	--AND organizations.stripe_customer_id = 'cus_HnBcxQXM2UjZhg'
+	AND organizations.stripe_customer_id = 'cus_HnBcxQXM2UjZhg'
 	--AND organizations.id = '972' -- ramp org.id 972
 	--AND projects.id IN (6783, 1962) -- the projects that we are billing, dunno why we do not bill the other two projects.
 	--AND identity_accesses.status IN (6) -- only charge the POA of successful verifications

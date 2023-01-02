@@ -17,8 +17,8 @@ WHERE
     --AND identity_accesses.project_id IN (1962, 6783) -- IDs are for the following Slugs same order ramp-0a5fd2a7, ramp-e8c15113,
     AND identity_accesses.status IN (6,7) -- status 6 means it is approved
     -- DEFINE TIMEFRAME WITH ISO
-    AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-01-01' -- GOES BY UTC TIME
-    AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2022-12-01' -- GOES BY UTC TIME
+    AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-12-01' -- GOES BY UTC TIME
+    AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2023-01-01' -- GOES BY UTC TIME
 GROUP BY
 	organizations.id,
 	organizations.name,
