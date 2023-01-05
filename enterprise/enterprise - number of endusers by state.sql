@@ -12,8 +12,8 @@ FROM
     LEFT JOIN organizations on projects.organization_id = organizations.id
     LEFT JOIN organization_profiles on organizations.profile_id = organization_profiles.id
 WHERE
-    TO_CHAR(trust_assessments.created_at, 'YYYY-MM') >= '2022-01-01'
-    AND TO_CHAR(trust_assessments.created_at, 'YYYY-MM') < '2022-12-01'
+    TO_CHAR(trust_assessments.created_at, 'YYYY-MM-DD') >= '2022-12-01'
+    AND TO_CHAR(trust_assessments.created_at, 'YYYY-MM-DD') < '2023-01-01'
     AND organizations.id NOT IN (
 	'37224886-12ca-418c-9a83-71ec45e82ca1', -- organization_profiles.name = 'passbase.com'
 	'72d0fc51-e792-4b41-aa82-b6785bef9018', -- organization_profiles.name = 'Marc Morant PB'

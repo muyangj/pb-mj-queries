@@ -32,8 +32,8 @@ WHERE
 	'fbd5e73a-2f5e-4340-905e-0bc2d433fb79', -- organization_profiles.name = 'Passbase's
 	'17c0d7dc-5508-4694-b8b7-d3f553347a23' -- organization_profiles.name = 'YZ Test'
 		)
-	AND trust_builder_trust_builds.updated_at >= '2022-01-01'
-	AND trust_builder_trust_builds.updated_at < '2022-12-01'
+	AND trust_builder_trust_builds.updated_at >= '2022-12-01'
+	AND trust_builder_trust_builds.updated_at < '2023-01-01'
 	AND trust_builder_trust_builds.completed = 't'
 GROUP BY
 	TO_CHAR(trust_builder_trust_builds.updated_at, 'YYYY-MM')

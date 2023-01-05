@@ -26,11 +26,13 @@ WHERE
 	'60c8caae-5530-41d6-9052-a965153eba76', -- organization_profiles.name = 'Passbase'
 	'c663d24c-a96a-4ed7-875f-916ae14dc1a6', -- organization_profiles.name = 'Passbase'
 	'b909abe5-7573-443d-a7c4-7fbc7c6b3c54', -- organization_profiles.name = 'Passbase'
+	'85cbc5d2-fcaf-43b6-947c-3499af44ccef', -- organization_profiles.name = 'Passbase'
 	'771b8576-626b-4fe4-927b-4bfe6bf0c758', -- organization_profiles.name = 'Passbase'
-	'fbd5e73a-2f5e-4340-905e-0bc2d433fb79' -- organization_profiles.name = 'Passbase'
+	'fbd5e73a-2f5e-4340-905e-0bc2d433fb79', -- organization_profiles.name = 'Passbase's
+	'17c0d7dc-5508-4694-b8b7-d3f553347a23' -- organization_profiles.name = 'YZ Test'
 	)
-	AND trust_assessments.created_at >= '2022-11-01'
-	AND trust_assessments.created_at < '2022-12-01'
+	AND trust_assessments.created_at >= '2022-12-01'
+	AND trust_assessments.created_at < '2023-01-01'
 	AND trust_assessments.assessment_origin_type = 'TRUST_BUILD'
 GROUP BY
 	TO_CHAR(trust_assessments.created_at, 'YYYY-MM'),
