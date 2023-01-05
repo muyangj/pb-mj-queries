@@ -33,7 +33,7 @@ WHERE
 	)
 	AND trust_assessments.created_at >= '2022-12-01'
 	AND trust_assessments.created_at < '2023-01-01'
-	AND trust_assessments.assessment_origin_type = 'TRUST_BUILD'
+	--AND trust_assessments.assessment_origin_type = 'TRUST_BUILD'
 GROUP BY
 	TO_CHAR(trust_assessments.created_at, 'YYYY-MM'),
 	organization_profiles.name,

@@ -1,4 +1,10 @@
-SELECT COUNT(a.id)
+/*
+This query gets the number of accesses. It is different from the number of end-users, or the number of trust_assessment, or the number of trust_builds.
+This is the query that is in the Stripe billing. To avoid inconsistent, will keep to this query.
+One question here is that, comment line 25 out does not make too much difference, which is suspecious. Our INVALID rate should be around 20%.
+*/
+SELECT
+    COUNT(a.id)
 FROM
     accesses AS a
     INNER JOIN trust_assessments AS ta ON (
@@ -25,7 +31,7 @@ WHERE
         FROM
             organizations AS o
             INNER JOIN projects AS p ON p.organization_id = o.id
-            INNER JOIN targets AS t ON t.project_id = p.id 
-       WHERE
+            INNER JOIN targets AS t ON t.project_id = p.id
+        WHERE
             o.id = '7f60b84d-9ee7-43da-9a5f-bfb4081fb10e'
     );
