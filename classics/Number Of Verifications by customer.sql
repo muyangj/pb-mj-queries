@@ -16,10 +16,10 @@ FROM
 	LEFT JOIN organizations ON projects.organization_id = organizations.id
 WHERE
 	identity_accesses.status NOT IN(0, 1)
-	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-10-01'
-	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2022-12-01'
+	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-12-01'
+	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2023-01-01'
 	--AND environment_type <> 0
-	AND organizations.stripe_customer_id = 'cus_KEs4EE1dM5eMIT'
+	AND organizations.stripe_customer_id = 'cus_KUqspPaNT4plIk'
 	--AND organizations.id IN (6988)
 GROUP BY
 	--organizations.id,

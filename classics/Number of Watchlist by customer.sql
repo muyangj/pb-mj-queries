@@ -11,12 +11,12 @@ FROM
 	LEFT JOIN organizations ON projects.organization_id = organizations.id
 	LEFT JOIN organization_profiles on organization_profiles.organization_id = organizations.id
 WHERE
-	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-11-01'
-	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2022-12-01'
-	--AND organizations.stripe_customer_id = 'cus_KUqspPaNT4plIk'
+	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-12-01'
+	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2023-01-01'
+	AND organizations.stripe_customer_id = 'cus_KUqspPaNT4plIk'
 GROUP BY
 	--organization_profiles.name,
 	--organizations.stripe_customer_id,
 	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM')
 ORDER BY 
-	"Number of Watchlist" DESC;
+	"IA created at" DESC;
