@@ -11,8 +11,8 @@ FROM
 	LEFT JOIN organizations ON projects.organization_id = organizations.id
 	LEFT JOIN organization_profiles on organization_profiles.organization_id = organizations.id
 WHERE
-	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2022-12-01'
-	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2023-01-01'
+	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2023-01-01'
+	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2023-02-01'
 	AND organizations.stripe_customer_id = 'cus_KUqspPaNT4plIk'
 GROUP BY
 	--organization_profiles.name,

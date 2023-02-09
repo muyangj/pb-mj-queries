@@ -1,7 +1,7 @@
 SELECT
 	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM') as "IA created at",
-	organizations.stripe_customer_id AS "Stripe_id",
-	organization_profiles.name as "org_name",
+	--organizations.stripe_customer_id AS "Stripe_id",
+	--organization_profiles.name as "org_name",
 	COUNT(DISTINCT aml_profiles.id) AS "Number of Watchlist"
 FROM
 	aml_profiles
@@ -13,10 +13,10 @@ FROM
 WHERE
 	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') >= '2023-01-01'
 	AND TO_CHAR(identity_accesses.completed_at, 'YYYY-MM-DD') < '2023-02-01'
-	AND organizations.stripe_customer_id = 'cus_KEs4EE1dM5eMIT'
+	AND organizations.stripe_customer_id = 'cus_Kje2cHwfA3iGcW'
 GROUP BY
-	organization_profiles.name,
-	organizations.stripe_customer_id,
+	--organization_profiles.name,
+	--organizations.stripe_customer_id,
 	TO_CHAR(identity_accesses.completed_at, 'YYYY-MM')
 ORDER BY 
-	"Number of Watchlist" DESC;
+	"IA created at" DESC;

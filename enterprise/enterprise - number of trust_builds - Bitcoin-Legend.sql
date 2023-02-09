@@ -11,8 +11,8 @@ FROM
 	LEFT JOIN organization_profiles ON organizations.profile_id = organization_profiles.id
 WHERE
 	organizations.id = '7f60b84d-9ee7-43da-9a5f-bfb4081fb10e' -- organiztions.id = Bitcoin Ledgend
-	AND trust_builder_trust_builds.updated_at >= '2023-01-01'
-	AND trust_builder_trust_builds.updated_at < '2023-02-01'
+	AND trust_builder_trust_builds.updated_at >= '2022-12-06'
+	AND trust_builder_trust_builds.updated_at < '2023-01-01'
 	AND trust_builder_trust_builds.completed = 't'
 GROUP BY
 	TO_CHAR(trust_builder_trust_builds.updated_at, 'YYYY-MM'),
