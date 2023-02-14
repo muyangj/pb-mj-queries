@@ -12,10 +12,10 @@ SELECT
 	COUNT (DISTINCT identity_accesses.id) AS "Verification Volume (Total)"
 FROM
 	identity_accesses
-	LEFT JOIN projects ON identity_accesses.project_id = projects.id
-	LEFT JOIN organizations ON projects.organization_id = organizations.id
+	JOIN projects ON identity_accesses.project_id = projects.id
+	JOIN organizations ON projects.organization_id = organizations.id
 WHERE
-	identity_accesses.status NOT IN(0, 1)
+	identity_accesses.status NOT IN (0, 1)
 GROUP BY
 	organizations.stripe_customer_id
 ORDER BY
